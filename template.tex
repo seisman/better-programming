@@ -9,6 +9,23 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+$if(title)$
+\title{$title$}
+$endif$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$date$}
+
 \begin{document}
+
+$if(title)$
+\maketitle
+$endif$
+
+$if(toc)$
+\tableofcontents
+\clearpage
+$endif$
+
 $body$
+
 \end{document}
