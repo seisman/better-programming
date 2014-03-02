@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 \usepackage{xeCJK}
 \setCJKmainfont{SimSun}
@@ -31,6 +31,11 @@
 \newcommand{\RegionMarkerTok}[1]{{#1}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
 \newcommand{\NormalTok}[1]{{#1}}
+
+\usepackage{enumitem}   %列表宏包
+% itemsep 设置列表间距
+% topsep 设置列表前间距
+\setenumerate[1]{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=2pt}
 
 $if(title)$
 \title{$title$}
