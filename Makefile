@@ -5,7 +5,7 @@ TEMPLATE = template.tex
 LATEX = xelatex
 OPTIONS = --toc --latex-engine=$(LATEX) --highlight-style pygments
 
-all: pdf text
+all: pdf tex
 
 pdf:
 	$(PANDOC) $(ALLRST) -o $(OUT).pdf $(OPTIONS) --template=$(TEMPLATE)
