@@ -11,3 +11,5 @@ pdf:
 	$(PANDOC) $(ALLRST) -o $(OUT).pdf $(OPTIONS) --template=$(TEMPLATE)
 tex:
 	$(PANDOC) $(ALLRST) -o $(OUT).tex $(OPTIONS) --template=$(TEMPLATE)
+clean:
+	-rm *.log *.aux *.out *.toc
