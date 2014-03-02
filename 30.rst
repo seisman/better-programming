@@ -1,0 +1,73 @@
+请sizeof类型而不是变量
+======================
+
+许多程序员在使用sizeof中，喜欢sizeof变量名，例如：
+
+.. code-block:: c
+
+    int score[100];
+    char filename[20];
+    struct UserInfo usr[100];
+
+在sizeof这三个的变量名时，都会返回正确的结果，于是许多程序员就开始sizeof变量名。这个习惯很虽然没有什么不好，但我还是建议sizeof类型。
+
+我看到过这个的程序：
+
+.. code-block:: c
+
+    pScore = (int*) malloc( SUBJECT_CNT );
+    memset( pScore, 0, sizeof(pScore) );
+    ...
+    
+此时，sizeof(pScore)返回的就是4（指针的长度），不会是整个数组，于是，memset就不能对这块内存进行初始化。为了程序的易读和易维护，我强烈建议使用类型而不是变量，如：
+
+对于score：
+
+.. code-block:: c
+
+    sizeof(int) * 100   /* 100个int */
+
+对于filename：
+
+.. code-block:: c
+
+    sizeof(char) * 20   /* 20个char */
+
+对于usr：
+
+.. code-block:: c
+
+    sizeof(struct UserInfo) * 100   /* 100个UserInfo */
+
+这样的代码是不是很易读？一眼看上去就知道什么意思了。
+
+
+另外一点，sizeof一般用于分配内存，这个特性特别在多维数组时，就能体现出其优点了。如，给一个字符串数组分配内存，
+
+.. code-block:: c
+
+    /* 
+     * 分配一个有20个字符串，
+     * 每个字符串长100的内存 
+     */
+
+    char* *p;
+
+    /*
+     * 错误的分配方法
+     */
+     p = (char**)calloc( 20*100, sizeof(char) );
+
+
+    /*
+     * 正确的分配方法
+     */
+     p = (char**) calloc ( 20, sizeof(char*) );
+     for ( i=0; i<20; i++){
+         /*p = (char*) calloc ( 100, sizeof(char) );*/
+         p[i] = (char*) calloc ( 100, sizeof(char) );
+     }
+
+（注：上述语句被注释掉的是原来的，是错误的，由dasherest朋友指正，谢谢）
+
+为了代码的易读，省去了一些判断，请注意这两种分配的方法，有本质上的差别。

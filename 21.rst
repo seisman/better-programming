@@ -1,0 +1,44 @@
+goto语句的使用
+==============
+
+N年前，软件开发的一代宗师——迪杰斯特拉(Dijkstra)说过：“goto statment is harmful !!”，并建议取消goto语句。因为goto语句不利于程序代码的维护性。
+
+这里我也强烈建议不要使用goto语句，除非下面的这种情况：
+
+.. code-block:: c
+
+    #define FREE(p) if(p) { /
+                        free(p); /
+                        p = NULL; /
+                    }
+
+    main()
+    {
+        char *fname=NULL, *lname=NULL, *mname=NULL;
+
+        fname = ( char* ) calloc ( 20, sizeof(char) );
+        if ( fname == NULL ){
+            goto ErrHandle;
+        }
+
+        lname = ( char* ) calloc ( 20, sizeof(char) );
+        if ( lname == NULL ){
+            goto ErrHandle;
+        }
+
+        mname = ( char* ) calloc ( 20, sizeof(char) );
+        if ( mname == NULL ){
+            goto ErrHandle;
+        }
+        
+        ......
+     
+        
+     ErrHandle:
+        FREE(fname);
+        FREE(lname);
+        FREE(mname);
+        ReportError(ERR_NO_MEMOEY);
+     }
+
+也只有在这种情况下，goto语句会让你的程序更易读，更容易维护。（在用嵌C来对数据库设置游标操作时，或是对数据库建立链接时，也会遇到这种结构）

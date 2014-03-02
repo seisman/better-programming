@@ -1,0 +1,75 @@
+typedef的使用
+=============
+
+typedef是一个给类型起别名的关键字。不要小看了它，它对于你代码的维护会有很好的作用。比如C中没有bool，于是在一个软件中，一些程序员使用int，一些程序员使用short，会比较混乱，最好就是用一个typedef来定义，如：
+
+.. code-block:: c
+
+    typedef char bool;
+    
+一般来说，一个C的工程中一定要做一些这方面的工作，因为你会涉及到跨平台，不同的平台会有不同的字长，所以利用预编译和typedef可以让你最有效的维护你的代码，如下所示：
+
+.. code-block:: c
+
+    #ifdef SOLARIS2_5
+      typedef boolean_t     BOOL_T;
+    #else
+      typedef int           BOOL_T;
+    #endif
+    
+    typedef short           INT16_T;
+    typedef unsigned short  UINT16_T;
+    typedef int             INT32_T;
+    typedef unsigned int    UINT32_T;
+    
+    #ifdef WIN32
+      typedef _int64        INT64_T;
+    #else
+      typedef long long     INT64_T;
+    #endif
+    
+    typedef float           FLOAT32_T;
+    typedef char*           STRING_T;
+    typedef unsigned char   BYTE_T;
+    typedef time_t          TIME_T; 
+    typedef INT32_T         PID_T;
+    
+使用typedef的其它规范是，在结构和函数指针时，也最好用typedef，这也有利于程序的易读和可维护性。如：
+
+.. code-block:: c
+
+    typedef struct _hostinfo { 
+        HOSTID_T   host; 
+        INT32_T    hostId; 
+        STRING_T   hostType; 
+        STRING_T   hostModel; 
+        FLOAT32_T  cpuFactor; 
+        INT32_T    numCPUs;
+        INT32_T    nDisks;
+        INT32_T    memory;
+        INT32_T    swap;
+    } HostInfo;
+
+
+    typedef INT32_T (*RsrcReqHandler)(
+     void *info,
+     JobArray *jobs, 
+     AllocInfo *allocInfo,
+     AllocList *allocList);
+
+C++中这样也是很让人易读的：
+
+.. code-block:: c
+
+    typedef CArray<HostInfo, HostInfo&> HostInfoArray;
+
+于是，当我们用其定义变量时，会显得十分易读。如：
+
+.. code-block:: c
+
+    HostInfo* phinfo;
+    RsrcReqHandler* pRsrcHand;
+
+这种方式的易读性，在函数的参数中十分明显。
+
+关键是在程序种使用typedef后，几乎所有的程序中的类型声明都显得那么简洁和清淅，而且易于维护，这才是typedef的关键。
