@@ -6,7 +6,7 @@
 .. code-block:: c
 
     if ( p == NULL ){
-        printf ( "ERR: The pointer is NULL/n" );
+        printf ( "ERR: The pointer is NULL\n" );
     }
     
 告别学生时代的编程吧。这种编程很不利于维护和管理，出错信息或是提示信息，应该统一处理，而不是像上面这样，写成一个“硬编码”。第10条对这方面的处理做了一部分说明。如果要管理错误信息，那就要有以下的处理：
@@ -48,11 +48,11 @@
     void perror( char* info)
     {
         if ( info ){
-            printf("%s: %s/n", info, errmsg[errno] );
+            printf("%s: %s\n", info, errmsg[errno] );
             return;
         }
         
-        printf("Error: %s/n", errmsg[errno] );
+        printf("Error: %s\n", errmsg[errno] );
     }
 
 这个基本上是ANSI的错误处理实现细节了，于是当你程序中有错误时你就可以这样处理：

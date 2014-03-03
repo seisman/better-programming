@@ -7,7 +7,7 @@
 
     fp = fopen("log.txt", "a");
     if ( fp == NULL ){
-        printf("Error: open file error/n");
+        printf("Error: open file error\n");
         return FALSE;
     }
 

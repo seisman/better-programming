@@ -25,11 +25,11 @@
     if ( sum > 100 &&
          ( ( fp=fopen( filename,"a" ) ) != NULL )   {
          
-         fprintf(fp, "Warring: it beyond one hundred/n");
+         fprintf(fp, "Warring: it beyond one hundred\n");
          ......
     }
     
-    fprintf( fp, " sum is %id /n", sum );
+    fprintf( fp, " sum is %id \n", sum );
     fclose( fp );
 
 本来的意图是，如果sum > 100 ，向文件中写一条出错信息，为了方便，把两个条件判断写在一起，于是，如果sum<=100时，打开文件的操作将不会做，最后，fprintf和fclose就会发现未知的结果。
