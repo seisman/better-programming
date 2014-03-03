@@ -35,7 +35,7 @@
 \usepackage{enumitem}   %列表宏包
 % itemsep 设置列表间距
 % topsep 设置列表前间距
-\setenumerate[1]{itemsep=2pt,partopsep=0pt,parsep=\parskip,topsep=2pt}
+\setenumerate[1]{itemsep=2pt,partopsep=0pt,parsep=1pt,topsep=2pt}
 
 $if(title)$
 \title{$title$}
@@ -56,6 +56,7 @@ $if(toc)$
 \clearpage
 $endif$
 
+\setlength{\parskip}{0.5em}
 $body$
 
 \end{document}
