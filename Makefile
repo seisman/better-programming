@@ -1,5 +1,5 @@
 PANDOC = pandoc
-ALLRST = $(wildcard *.rst)
+ALLRST = $(wildcard rst/*.rst)
 OUT = better-programming
 TEMPLATE = template.tex
 LATEX = xelatex
