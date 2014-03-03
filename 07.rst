@@ -7,17 +7,17 @@
 
 .. code-block:: c
 
-    #ifndef  <标识>
-    #define <标识>
+    #ifndef  <marker>
+    #define <marker>
     
     ......
     ......
     
     #endif
     
-<标识>在理论上来说可以是自由命名的，但每个头文件的这个“标识”都应该是唯一的。标识的命名规则一般是头文件名全大写，前后加下划线，并把文件名中的“.”也变成下划线，如：stdio.h
+<marker>在理论上来说可以是自由命名的，但每个头文件的这个“标识”都应该是唯一的。标识的命名规则一般是头文件名全大写，前后加下划线，并把文件名中的“\ ``.``\ ”也变成下划线，如：\ ``stdio.h``\ 
 
-.. code-block::
+.. code-block:: c
 
     #ifndef _STDIO_H_
     #define _STDIO_H_
