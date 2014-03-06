@@ -14,8 +14,7 @@
 
 有空格和没有空格的感觉不一样吧。一般来说，语句中要在各个操作符间加空格，函数调用时，要以各个参数间加空格。如下面这种加空格的和不加的：
 
-.. 
-   code-block:: c
+.. code-block:: c
 
     if ((hProc=OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid))==NULL){
     }
