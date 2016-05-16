@@ -6,5 +6,3 @@
 
 这里利用Pandoc以及LaTeX重新制作了PDF版本，加入了代码高亮，并修正了一些拼写错误。
 
-PDF发布页：http://seisman.info/better-programming.html
-
